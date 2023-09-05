@@ -21,3 +21,6 @@ podman run -dt \
 localhost/image_package_1:latest
 
 ## -v /opt/dmtools/code/dmtoolv1/:/workdir \
+#podman build \
+#--build-arg=ENV_UID=${ENV_UID} \
+#-t image_mariadb_1 .
