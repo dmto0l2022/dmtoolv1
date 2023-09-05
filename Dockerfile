@@ -81,3 +81,4 @@ RUN echo ${BUILD_TWINE_PASSWORD}
 RUN /env/bin/python3 -m pip install --upgrade twine
 RUN /env/bin/python3 -m twine upload --username __token__ --password ${BUILD_TWINE_PASSWORD}  --repository testpypi dist/*
 
+RUN /env/bin/python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps package-agaitskell
