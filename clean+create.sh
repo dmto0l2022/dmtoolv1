@@ -13,7 +13,7 @@ subgidSize=$(( $(podman info --format "{{ range \
 
 podman build \
 -f Dockerfile \
---build-arg=TWINE_PASSWORD=${TWINE_PASSWORD} \
+--build-arg=TWINE_PASSWORD=$TWINE_PASSWORD \
 -t image_package_1 .
 
 ##-v /HOST-DIR:/CONTAINER-DIR
