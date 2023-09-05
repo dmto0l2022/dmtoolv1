@@ -50,9 +50,11 @@ COPY ./requirements.txt /env/requirements.txt
 RUN /env/bin/pip3 install -r /env/requirements.txt
 RUN /env/bin/pip3 freeze
 
+COPY ./requirements.txt /env/requirements.txt
 RUN /env/bin/python3 -m pip install --upgrade build
-WORKDIR /workdir/dmtoolv1/dmtool/
+COPY dmtool/ /workdir/dmtool/
+WORKDIR /workdir/dmtool/
 RUN /env/bin/python3 -m build
-RUN ls -la /workdir/dmtoolv1/dist/*
+RUN ls -la /workdir/dmtool/dist/*
 
 
