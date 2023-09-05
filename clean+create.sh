@@ -18,5 +18,6 @@ podman build -f Dockerfile -t image_package_1 .
 podman run -dt \
 --name container_package_1 \
 --user $uid:$gid \
--v /opt/dmtools/code/dmtoolv1/:/workdir \
 localhost/image_package_1:latest
+
+## -v /opt/dmtools/code/dmtoolv1/:/workdir \
