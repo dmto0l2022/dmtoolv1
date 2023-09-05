@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/dmto0l2022/dmtoolv1/dmtool/"
+"Homepage" = "https://github.com/dmto0l2022/dmtoolv1/tree/main/dmtool"
 "Bug Tracker" = "https://github.com/dmto0l2022/dmtoolv1/dmtool/issues"
