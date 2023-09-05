@@ -11,14 +11,16 @@ subuidSize=$(( $(podman info --format "{{ range \
 subgidSize=$(( $(podman info --format "{{ range \
    .Host.IDMappings.GIDMap }}+{{.Size }}{{end }}" ) - 1 ))
 
-podman build -f Dockerfile -t image_package_1 .
+podman build \
+-f Dockerfile \
+--build-arg=TWINE_PASSWORD=${TWINE_PASSWORD} \
+-t image_package_1 .
 
 ##-v /HOST-DIR:/CONTAINER-DIR
 
 podman run -dt \
 --name container_package_1 \
 --user $uid:$gid \
---build-arg=TWINE_PASSWORD=${TWINE_PASSWORD} \
 localhost/image_package_1:latest
 
 ## -v /opt/dmtools/code/dmtoolv1/:/workdir \
