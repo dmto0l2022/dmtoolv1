@@ -1,3 +1,23 @@
+
+#ARG BUILD_ENV_MARIADB_DATABASE
+#ENV ENV_USERNAME=$BUILD_ENV_USERNAME
+
+#TWINE_USERNAME - the username to use for authentication to the repository.
+#TWINE_PASSWORD - the password to use for authentication to the repository.
+#TWINE_REPOSITORY - the repository configuration, either defined as a section in .pypirc or provided as a full URL.
+#TWINE_REPOSITORY_URL - the repository URL to use.
+#TWINE_CERT - custom CA certificate to use for repositories with self-signed or untrusted certificates.
+#TWINE_NON_INTERACTIVE - Do not interactively prompt for username/password if the required credentials are missing.
+
+ARG BUILD_TWINE_USERNAME
+ENV TWINE_USERNAME=$BUILD_ENV_USERNAME
+
+ARG BUILD_TWINE_PASSWORD
+ENV TWINE_PASSWORD=$BUILD_TWINE_PASSWORD
+
+ARG BUILD_TWINE_REPOSITORY
+ENV TWINE_REPOSITORY=$BUILD_TWINE_REPOSITORY
+
 # pull official base image
 FROM python:3.11.4-bullseye
 
