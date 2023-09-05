@@ -28,11 +28,11 @@ RUN mkdir /env
 RUN chown $USER_UID:$USER_GID /env
 RUN chmod g+s /env
 
-#COPY app/ /app/
+COPY dmtool/ /workdir/dmtool/
 
-#RUN chown -R $USER_UID:$USER_GID /app
+RUN chown -R $USER_UID:$USER_GID /workdir/dmtool/
 
-#RUN ls -la /app/*
+RUN ls -la /workdir/dmtool/*
 
 USER $USERNAME
 
@@ -52,7 +52,6 @@ RUN /env/bin/pip3 freeze
 
 COPY ./requirements.txt /env/requirements.txt
 RUN /env/bin/python3 -m pip install --upgrade build
-COPY dmtool/ /workdir/dmtool/
 WORKDIR /workdir/dmtool/
 RUN /env/bin/python3 -m build
 RUN ls -la /workdir/dmtool/dist/*
