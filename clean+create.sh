@@ -16,7 +16,7 @@ echo $TWINE_PASSWORD
 
 podman build \
 -f Dockerfile \
---build-arg=TWINE_PASSWORD=${TWINE_PASSWORD} \
+--build-arg=BUILD_TWINE_PASSWORD=${TWINE_PASSWORD} \
 -t image_package_1 .
 
 ##-v /HOST-DIR:/CONTAINER-DIR
