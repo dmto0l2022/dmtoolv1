@@ -49,3 +49,10 @@ RUN whereis pip3
 COPY ./requirements.txt /env/requirements.txt
 RUN /env/bin/pip3 install -r /env/requirements.txt
 RUN /env/bin/pip3 freeze
+
+RUN /env/bin/python3 -m pip install --upgrade build
+RUN cd /workdir/dmtoolv1
+RUN /env/bin/python3 -m build
+RUN ls -la /workdir/dmtoolv1/dist/*
+
+
