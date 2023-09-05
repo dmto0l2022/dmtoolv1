@@ -56,4 +56,6 @@ WORKDIR /workdir/dmtool/
 RUN /env/bin/python3 -m build
 RUN ls -la /workdir/dmtool/dist/*
 
+RUN /env/bin/python3 -m pip install --upgrade twine
+RUN /env/bin/python3 -m twine upload --repository testpypi dist/*
 
