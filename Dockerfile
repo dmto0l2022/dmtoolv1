@@ -9,6 +9,9 @@
 #TWINE_CERT - custom CA certificate to use for repositories with self-signed or untrusted certificates.
 #TWINE_NON_INTERACTIVE - Do not interactively prompt for username/password if the required credentials are missing.
 
+# pull official base image
+FROM python:3.11.4-bullseye
+
 ARG BUILD_TWINE_USERNAME
 ENV ENV_TWINE_USERNAME=$BUILD_ENV_USERNAME
 
@@ -17,9 +20,6 @@ ENV ENV_TWINE_PASSWORD=$BUILD_TWINE_PASSWORD
 
 ARG BUILD_TWINE_REPOSITORY
 ENV ENV_TWINE_REPOSITORY=$BUILD_TWINE_REPOSITORY
-
-# pull official base image
-FROM python:3.11.4-bullseye
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
