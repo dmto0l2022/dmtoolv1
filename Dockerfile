@@ -13,7 +13,7 @@ ARG BUILD_TWINE_USERNAME
 ENV TWINE_USERNAME=$BUILD_ENV_USERNAME
 
 ARG BUILD_TWINE_PASSWORD
-ENV TWINE_PASSWORD=$BUILD_TWINE_PASSWORD
+ENV ENV_TWINE_PASSWORD=$BUILD_TWINE_PASSWORD
 
 ARG BUILD_TWINE_REPOSITORY
 ENV TWINE_REPOSITORY=$BUILD_TWINE_REPOSITORY
@@ -77,5 +77,5 @@ RUN /env/bin/python3 -m build
 RUN ls -la /workdir/dmtool/dist/*
 
 RUN /env/bin/python3 -m pip install --upgrade twine
-RUN /env/bin/python3 -m twine upload --repository testpypi dist/*
+RUN /env/bin/python3 -m twine upload --username __token__ --password $(ENV_TWINE_PASSWORD)  --repository testpypi dist/*
 
