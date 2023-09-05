@@ -2,7 +2,7 @@ podman stop container_package_1
 podman rm container_package_1
 podman rmi image_package_1
 
-cd /opt/dmtools/code/dmtoolv1/fastapi_orm
+cd /opt/dmtools/code/dmtoolv1
 
 uid=1001
 gid=1002
@@ -18,4 +18,5 @@ podman build -f Dockerfile -t image_package_1 .
 podman run -dt \
 --name container_package_1 \
 --user $uid:$gid \
+-v /opt/dmtools/code/dmtoolv1/:/workdir \
 localhost/image_package_1:latest
