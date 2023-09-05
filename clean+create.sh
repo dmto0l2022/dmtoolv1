@@ -11,6 +11,9 @@ subuidSize=$(( $(podman info --format "{{ range \
 subgidSize=$(( $(podman info --format "{{ range \
    .Host.IDMappings.GIDMap }}+{{.Size }}{{end }}" ) - 1 ))
 
+echo ${TWINE_PASSWORD}
+echo $TWINE_PASSWORD
+
 podman build \
 -f Dockerfile \
 --build-arg=TWINE_PASSWORD=${TWINE_PASSWORD} \
