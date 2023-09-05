@@ -76,8 +76,8 @@ WORKDIR /workdir/dmtool/
 RUN /env/bin/python3 -m build
 RUN ls -la /workdir/dmtool/dist/*
 
-RUN echo $(TWINE_PASSWORD)
+RUN echo $TWINE_PASSWORD
 
 RUN /env/bin/python3 -m pip install --upgrade twine
-RUN /env/bin/python3 -m twine upload --username __token__ --password $(ENV_TWINE_PASSWORD)  --repository testpypi dist/*
+RUN /env/bin/python3 -m twine upload --username __token__ --password $(TWINE_PASSWORD)  --repository testpypi dist/*
 
