@@ -2,6 +2,8 @@
 #ARG BUILD_ENV_MARIADB_DATABASE
 #ENV ENV_USERNAME=$BUILD_ENV_USERNAME
 
+# https://twine.readthedocs.io/en/stable/
+
 #TWINE_USERNAME - the username to use for authentication to the repository.
 #TWINE_PASSWORD - the password to use for authentication to the repository.
 #TWINE_REPOSITORY - the repository configuration, either defined as a section in .pypirc or provided as a full URL.
@@ -11,6 +13,8 @@
 
 # pull official base image
 FROM python:3.11.4-bullseye
+
+## VERY IMPORTANT - the below must always go after FROM
 
 ARG BUILD_TWINE_USERNAME
 ENV ENV_TWINE_USERNAME=$BUILD_ENV_USERNAME
