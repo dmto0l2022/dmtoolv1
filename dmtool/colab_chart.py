@@ -224,3 +224,34 @@ def CreateEmptyFig():
         type="linear"
     )
     return fig_ret
+
+def update_fig(selected_rows_in, fig_in):
+    results = []
+
+    limit_all_df, trace_all_df, limit_data_all_df, limit_all_dict ,limit_columns, limit_data_columns, trace_columns = GetLimits()
+
+    for row in selected_rows_in:
+        limit_id = limit_all_df.iloc[row]["limit_id"].copy()
+        #print('selected limit >>', limit_id)
+        limit_selected_df = limit_all_df[limit_all_df['limit_id']==limit_id].copy()
+        trace_selected_df = trace_all_df[trace_all_df['limit_id']==limit_id].copy()
+        limit_data_selected_df = limit_data_all_df[limit_data_all_df['limit_id']==limit_id].copy()
+        trace_id = 0
+        # df[(df.year == 2013) & (df.country.isin(['US', 'FR', 'ES']))]
+        for index, row in trace_selected_df.iterrows():
+            trace_data = limit_data_selected_df[(limit_data_selected_df['limit_id']==row['limit_id']) \
+                                            & (limit_data_selected_df['trace_id']==row['trace_id'])].copy()
+            #print("trace_data >>>>" , trace_data)
+            row_data = row.copy()
+            trace_name = row_data['data_label'] + '_' + str(row_data['trace_id'])
+            trace_color_default = row_data['trace_color_default']
+            fig_in.add_trace(
+                go.Scatter(
+                    x=trace_data['masses'],
+                    y=trace_data['cross_sections'],
+                    name=trace_name,
+                    line=dict(color=trace_color_default),
+                    mode='lines',
+                )
+            )
+    return fig_in
